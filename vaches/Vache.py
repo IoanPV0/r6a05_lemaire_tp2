@@ -6,6 +6,7 @@ class Vache:
     POIDS_MAX = 1000.0
     PANSE_MAX = 50.0
     POIDS_MIN_PANSE = 2.0
+    RENDEMENT_RUMINATION = 0.25
     _compteur = 0
     def __init__(self, petit_nom:str = None, age:int = None, poids:float = None, panse:float = 0.0) -> None:
 
@@ -23,7 +24,6 @@ class Vache:
         self._age = age
         self._poids = poids
         self._panse = panse
-        self.RENDEMENT_RUMINATION = 0.25
 
     @property
     def poids(self) -> float:
@@ -32,6 +32,10 @@ class Vache:
     @property
     def panse(self) -> float:
         return self._panse
+    
+    @property
+    def age(self) -> int:
+        return self._age
     
     def brouter(self, quantite: float = None, nourriture: str = None) -> None:
         if quantite is None:
@@ -48,10 +52,21 @@ class Vache:
         self._panse = nouvelle_panse
     
     def ruminer(self) -> None:
-        panse_avant = self._panse
-        self._calculer_lait(None)
+        if self.panse > 0.0:
+            panse_avant = self.panse
+            self._panse = 0.0
+        else :
+            raise InvalidVacheException("La panse est vide, la vache ne peut pas ruminer.") 
+        gain = Vache.RENDEMENT_RUMINATION * panse_avant
+        self._poids += gain
 
-    def _calculer_lait(self, panse_avant : float) -> float:
+    def vieillir(self) -> None:
+        if self.age < Vache.AGE_MAX:
+            self._age += 1
+        else:
+            raise InvalidVacheException("La vache a atteint l'âge maximum et ne peut pas vieillir davantage.")
+        
+    def _calculer_lait(self, panse_avant : float = None) -> float:
         return 0.0
     
     def _stocker_lait(self, lait : float) -> None:

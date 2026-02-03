@@ -132,7 +132,7 @@ def test_should_empty_panse_given_positive_panse_when_ruminer():
 
     # Assert (1 assertion métier)
     assert vache.panse == 0.0
-"""
+
 
 def test_should_increase_poids_given_positive_panse_when_ruminer():
     # Arrange
@@ -177,4 +177,3 @@ def test_should_raise_invalid_vache_exception_given_age_max_when_vieillir():
     # Act / Assert
     with pytest.raises(InvalidVacheException):
         vache.vieillir()
-"""
