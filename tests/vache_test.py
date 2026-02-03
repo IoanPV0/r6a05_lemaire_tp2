@@ -32,7 +32,7 @@ def test_should_raise_invalid_vache_exception_given_invalid_age(age):
     with pytest.raises(InvalidVacheException):
         Vache(petit_nom="Marguerite", poids=450.0, age=age)
 
-"""
+
 @pytest.mark.parametrize("poids", [-1.0])
 def test_should_raise_invalid_vache_exception_given_negative_poids(poids):
     # Arrange / Act / Assert
@@ -106,6 +106,8 @@ def test_should_raise_invalid_vache_exception_given_quantity_that_exceeds_panse_
         (Vache.PANSE_MAX - 1.0, 2.0),
     ],
 )
+
+
 def test_should_raise_invalid_vache_exception_given_panse_overflow_cases_when_brouter(panse_initiale, quantite):
     # Arrange
     vache = Vache(petit_nom="Marguerite", poids=450.0, age=5)
@@ -130,7 +132,7 @@ def test_should_empty_panse_given_positive_panse_when_ruminer():
 
     # Assert (1 assertion métier)
     assert vache.panse == 0.0
-
+"""
 
 def test_should_increase_poids_given_positive_panse_when_ruminer():
     # Arrange
