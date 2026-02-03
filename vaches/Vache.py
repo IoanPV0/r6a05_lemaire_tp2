@@ -1,6 +1,5 @@
 from vaches.exceptions import InvalidVacheException
 
-
 class Vache:
     AGE_MAX = 25
     POIDS_MAX = 1000.0

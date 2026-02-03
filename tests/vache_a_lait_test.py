@@ -1,7 +1,7 @@
-"""import pytest
+import pytest
 
 from vaches.exceptions import InvalidVacheException
-from vaches.vache_a_lait import VacheALait
+from vaches.VacheALait import VacheALait
 
 
 # -------------------------
@@ -14,7 +14,7 @@ def test_should_start_with_empty_panse_given_new_vache_a_lait():
 
     # Act / Assert (1 assertion métier)
     assert vache.panse == 0
-
+"""
 
 def test_should_increase_lait_disponible_given_positive_panse_when_ruminer():
     # Arrange
