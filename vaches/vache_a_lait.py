@@ -1,5 +1,5 @@
 from vaches.exceptions import InvalidVacheException
-from vaches.Vache import Vache
+from vaches.vache import Vache
 
 class VacheALait(Vache):
     RENDEMENT_LAIT = 1.1
