@@ -7,7 +7,7 @@ class Vache:
     POIDS_MIN_PANSE = 2.0
     RENDEMENT_RUMINATION = 0.25
     _compteur = 0
-    def __init__(self, petit_nom:str = None, age:int = None, poids:float = None, panse:float = 0.0) -> None:
+    def __init__(self, petit_nom:str = None, age:int = None, poids:float = None) -> None:
 
         Vache._compteur += 1
 
@@ -22,7 +22,7 @@ class Vache:
         self._petit_nom: str = petit_nom
         self._age: int = age
         self._poids: float = poids
-        self._panse: float = panse
+        self._panse: float = 0.0
 
     @property
     def poids(self) -> float:

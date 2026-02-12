@@ -5,7 +5,8 @@ class VacheALait(Vache):
     RENDEMENT_LAIT = 1.1
     PRODUCTION_LAIT_MAX = 40.0
     def __init__(self, petit_nom:str = None, age:int = None, poids:float = None) -> None:
-        super().__init__(petit_nom = petit_nom, age = age, poids = poids, panse = 0.0)
+        super().__init__(petit_nom = petit_nom, age = age, poids = poids)
+
         self._lait_disponible: float = 0.0
         self._lait_total_produit: float = 0.0
         self._lait_total_traite: float = 0.0
