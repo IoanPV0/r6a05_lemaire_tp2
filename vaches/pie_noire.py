@@ -1,6 +1,7 @@
 from vaches.exceptions import InvalidVacheException
-from vaches.vache import Vache, VacheALait
-from nourriture.type_nourriture import TypeNourriture
+from vaches.vache import Vache
+from vaches.vache_a_lait import VacheALait
+from vaches.nourriture.type_nourriture import TypeNourriture
 
 class PieNoire(VacheALait):
     COEFFICIENT_LAIT_PAR_NOURRITURE = dict[TypeNourriture, float]
@@ -18,6 +19,5 @@ class PieNoire(VacheALait):
     def nombre_tache_blanche(self) -> int:
         return self._nombre_tache_blanche
     
-    @property
     def __str__(self):
         return super().__str__()

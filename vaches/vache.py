@@ -25,6 +25,14 @@ class Vache:
         self._panse: float = 0.0
 
     @property
+    def petit_nom(self) -> str:
+        return self._petit_nom
+    
+    @property
+    def id(self) -> int:
+        return self._id
+
+    @property
     def poids(self) -> float:
         return self._poids
     
@@ -90,5 +98,5 @@ class Vache:
     def _valider_etat(self) -> None:
         pass
 
-    def __str__(self):
-        pass
+    def __str__(self) -> str:
+        return f"Vache ID {self.id}: {self.petit_nom}, Age: {self.age}, Poids: {self.poids}kg, Panse: {self.panse}kg"

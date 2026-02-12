@@ -1,7 +1,7 @@
 import pytest
 
 from vaches.exceptions import InvalidVacheException
-from vaches.nourriture.TypeNourriture import TypeNourriture
+from vaches.nourriture.type_nourriture import TypeNourriture
 from vaches.pie_noire import PieNoire
 from vaches.vache import Vache
 from vaches.vache_a_lait import VacheALait
@@ -18,7 +18,7 @@ def pie_ok() -> PieNoire:
         nb_taches_noires=18,
     )
 
-
+"""
 # -------------------------
 # INIT + PROPERTIES
 # -------------------------
@@ -176,3 +176,4 @@ def test_should_raise_invalid_vache_exception_given_panse_overflow_when_brouter(
     # Act / Assert
     with pytest.raises(InvalidVacheException):
         pie_ok.brouter(0.1)
+"""

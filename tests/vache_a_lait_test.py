@@ -251,7 +251,7 @@ def test_should_raise_invalid_vache_exception_given_production_max_reached_when_
 
 def test_should_include_milk_fields_in_str_given_new_vache_a_lait():
     # Arrange
-    vache = VacheALait(petitNom="Lola", poids=500.0, age=5)
+    vache = VacheALait(petit_nom="Lola", poids=500.0, age=5)
 
     # Act
     s = str(vache)
@@ -261,7 +261,7 @@ def test_should_include_milk_fields_in_str_given_new_vache_a_lait():
 
 def test_should_reflect_milk_values_in_str_given_ruminer_and_traire():
     # Arrange
-    vache = VacheALait(petitNom="Lola", poids=500.0, age=5)
+    vache = VacheALait(petit_nom="Lola", poids=500.0, age=5)
     vache.brouter(10.0)
     vache.ruminer()      # produit 11.0 L
     vache.traire(3.0)    # reste 8.0 L, total trait 3.0 L

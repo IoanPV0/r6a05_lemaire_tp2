@@ -23,10 +23,10 @@ class VacheALait(Vache):
     def lait_total_traite(self) -> float:
         return self._lait_total_traite
     
-    @property
-    def __str__(self):
-        return super().__str__()
+    def __str__(self) -> str:
+        return f"{super().__str__()} - Lait disponible : {self.lait_disponible:.1f} L, Lait total produit : {self.lait_total_produit:.1f} L, Lait total trait : {self.lait_total_traite:.1f} L"
     
+        
     def ruminer(self):
         super().ruminer()
     
