@@ -29,11 +29,19 @@ class VacheALait(Vache):
     def ruminer(self):
         super().ruminer()
     
-    def _calculer_lait(self, panse_avant = None):
+    def _calculer_lait(self, panse_avant = None) -> float:
         lait = VacheALait.RENDEMENT_LAIT * panse_avant
+        return lait
+    
+    def _stocker_lait(self, lait: float) -> None:
         self._lait_disponible += lait
         self._lait_total_produit += lait
-        return lait
+        super()._stocker_lait(lait)
+    
+    def _valider_rumination_possible(self):
+        if self._lait_disponible + (VacheALait.RENDEMENT_LAIT * self._panse) > VacheALait.PRODUCTION_LAIT_MAX:
+            raise InvalidVacheException("La production de lait a dépassé la limite maximale.")
+        return super()._valider_rumination_possible()
     
     def traire(self, litres: float = None) -> float:
         if litres is None:

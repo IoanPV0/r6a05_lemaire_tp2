@@ -173,7 +173,7 @@ def test_should_raise_invalid_vache_exception_given_typed_food_when_brouter_on_v
     with pytest.raises(InvalidVacheException):
         vache.brouter(2.0, nourriture="FOIN")
 
-"""
+
 # -------------------------
 # Test de la production de lait (capacité max)
 # -------------------------
@@ -248,4 +248,3 @@ def test_should_raise_invalid_vache_exception_given_production_max_reached_when_
 
     with pytest.raises(InvalidVacheException):
         vache.ruminer()
-"""
