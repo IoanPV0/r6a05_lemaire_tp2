@@ -4,7 +4,7 @@ from vaches.vache_a_lait import VacheALait
 from vaches.nourriture.type_nourriture import TypeNourriture
 
 class PieNoire(VacheALait):
-    COEFFICIENT_LAIT_PAR_NOURRITURE: dict[TypeNourriture, float] = {
+    COEFFICIENT_NUTRITIONNEL: dict[TypeNourriture, float] = {
         TypeNourriture.MARGUERITE: 1.1,
         TypeNourriture.HERBE: 1.0,
         TypeNourriture.FOIN: 0.9,
@@ -39,6 +39,9 @@ class PieNoire(VacheALait):
         return f"{super().__str__()} - Taches blanches: {self.nombre_taches_blanches}, Taches noires: {self.nombre_taches_noires}"
     
     def brouter(self, quantite: float = None, nourriture: TypeNourriture = None) -> None:
+        if nourriture is None:
+            return super().brouter(quantite=quantite, nourriture=nourriture)
+        
         if quantite is None:
             raise InvalidVacheException("La quantité doit être spécifiée.")
         if quantite <= 0.0:
@@ -52,3 +55,16 @@ class PieNoire(VacheALait):
         if nourriture not in self._ration:
             self._ration[nourriture] = 0.0
         self._ration[nourriture] += quantite
+
+    def _calculer_lait(self, panse_avant = None) -> float:
+        if not self.ration: 
+            return super()._calculer_lait(panse_avant=panse_avant)
+        lait = 0.0
+        for nourriture, quantite in self.ration.items():
+            lait += quantite * PieNoire.COEFFICIENT_NUTRITIONNEL[nourriture] * VacheALait.RENDEMENT_LAIT
+        return lait
+    
+    def _post_rumination(self, panse_avant, lait) -> None:
+        self._ration.clear()
+        super()._post_rumination(panse_avant, lait)
+        

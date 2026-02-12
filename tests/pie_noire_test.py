@@ -84,7 +84,7 @@ def test_should_not_change_ration_given_primary_brouter(pie_ok: PieNoire):
     # Assert (1 assertion métier)
     assert pie_ok.ration == {}
 
-"""
+
 def test_should_add_food_in_ration_given_typed_brouter(pie_ok: PieNoire):
     # Arrange
 
@@ -176,4 +176,3 @@ def test_should_raise_invalid_vache_exception_given_panse_overflow_when_brouter(
     # Act / Assert
     with pytest.raises(InvalidVacheException):
         pie_ok.brouter(0.1)
-"""

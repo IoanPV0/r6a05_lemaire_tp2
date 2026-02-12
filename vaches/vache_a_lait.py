@@ -36,8 +36,11 @@ class VacheALait(Vache):
     
     def _stocker_lait(self, lait: float) -> None:
         self._lait_disponible += lait
-        self._lait_total_produit += lait
         super()._stocker_lait(lait)
+
+    def _post_rumination(self, panse_avant, lait):
+        self._lait_total_produit += lait
+        return super()._post_rumination(panse_avant, lait)
     
     def _valider_rumination_possible(self):
         if self._lait_disponible + (VacheALait.RENDEMENT_LAIT * self._panse) > VacheALait.PRODUCTION_LAIT_MAX:
