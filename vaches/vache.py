@@ -18,11 +18,11 @@ class Vache:
         if poids is None or poids <= 0.0:
             raise InvalidVacheException("Le poids doit être un nombre positif.")
         
-        self._id = Vache._compteur
-        self._petit_nom = petit_nom
-        self._age = age
-        self._poids = poids
-        self._panse = panse
+        self._id: int = Vache._compteur
+        self._petit_nom: str = petit_nom
+        self._age: int = age
+        self._poids: float = poids
+        self._panse: float = panse
 
     @property
     def poids(self) -> float:
@@ -51,6 +51,9 @@ class Vache:
         self._panse = nouvelle_panse
     
     def ruminer(self) -> None:
+        self._valider_rumination_possible()
+        panse_avant = self._panse
+        gain = Vache.RENDEMENT_RUMINATION * panse_avant
         if self.panse > 0.0:
             panse_avant = self.panse
             self._panse = 0.0
@@ -58,6 +61,10 @@ class Vache:
             raise InvalidVacheException("La panse est vide, la vache ne peut pas ruminer.") 
         gain = Vache.RENDEMENT_RUMINATION * panse_avant
         self._poids += gain
+        lait = self._calculer_lait(panse_avant)
+        self._stocker_lait(lait)
+        self._panse = 0.0
+        self._post_rumination(panse_avant, lait)
 
     def vieillir(self) -> None:
         if self.age < Vache.AGE_MAX:
@@ -66,7 +73,7 @@ class Vache:
             raise InvalidVacheException("La vache a atteint l'âge maximum et ne peut pas vieillir davantage.")
         
     def _calculer_lait(self, panse_avant : float = None) -> float:
-        return 0.0
+        return None
     
     def _stocker_lait(self, lait : float) -> None:
         pass
@@ -81,4 +88,7 @@ class Vache:
         pass
 
     def _valider_etat(self) -> None:
+        pass
+
+    def __str__(self):
         pass

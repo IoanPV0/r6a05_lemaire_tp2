@@ -26,7 +26,7 @@ def test_should_increase_lait_disponible_given_positive_panse_when_ruminer():
 
     # Assert (1 assertion métier)
     assert vache.lait_disponible == pytest.approx(VacheALait.RENDEMENT_LAIT * 10.0)
-"""
+
 
 def test_should_increase_lait_total_produit_given_positive_panse_when_ruminer():
     # Arrange
@@ -173,7 +173,7 @@ def test_should_raise_invalid_vache_exception_given_typed_food_when_brouter_on_v
     with pytest.raises(InvalidVacheException):
         vache.brouter(2.0, nourriture="FOIN")
 
-
+"""
 # -------------------------
 # Test de la production de lait (capacité max)
 # -------------------------
