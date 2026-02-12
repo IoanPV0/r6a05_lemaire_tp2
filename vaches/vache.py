@@ -1,4 +1,5 @@
 from vaches.exceptions import InvalidVacheException
+from typing import Any
 
 class Vache:
     AGE_MAX = 25
@@ -44,7 +45,7 @@ class Vache:
     def age(self) -> int:
         return self._age
     
-    def brouter(self, quantite: float = None, nourriture: str = None) -> None:
+    def brouter(self, quantite: float = None, nourriture: Any | None = None) -> None:
         if quantite is None:
             raise InvalidVacheException("La quantité doit être spécifiée.")
         if quantite <= 0.0:
